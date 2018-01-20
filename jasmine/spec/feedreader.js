@@ -15,18 +15,18 @@ $(function() {
    */
   describe('RSS Feeds', function() {
 
-    // checks to see if the allFeeds array is undefined or empty
+    // checks to see if the allFeeds array is undefined or empty.
     it('are defined', function() {
       expect(allFeeds).toBeDefined();
       expect(allFeeds.length).not.toBe(0);
     });
 
-    // checks that every object in the allFeeds array has a URL
+    // checks that every object in the allFeeds array has a URL.
     it('has a URL', function() {
       expect(allFeeds.every((element) => element.url !== undefined && element.url !== "")).toBe(true);
     });
 
-    // checks that every object in the allFeeds array has a Name
+    // checks that every object in the allFeeds array has a Name.
     it('has a name', function() {
       expect(allFeeds.every((element) => element.name !== undefined && element.name !== "")).toBe(true);
     });
@@ -34,19 +34,30 @@ $(function() {
   });
 
 
-  /* TODO: Write a new test suite named "The menu" */
 
-  /* TODO: Write a test that ensures the menu element is
-   * hidden by default. You'll have to analyze the HTML and
-   * the CSS to determine how we're performing the
-   * hiding/showing of the menu element.
-   */
+  describe("The menu", function() {
 
-  /* TODO: Write a test that ensures the menu changes
-   * visibility when the menu icon is clicked. This test
-   * should have two expectations: does the menu display when
-   * clicked and does it hide when clicked again.
-   */
+    var menu = document.querySelector('body'),
+      menuIcon = document.querySelector('.menu-icon-link');
+
+    // checkes to see if the menu is hidden by defualt.
+    it('is hidden by defualt', function() {
+      expect(menu.classList.contains('menu-hidden')).toBe(true);
+    });
+
+    // checks to see if the menu's visibility changes when the menu icon is clicked
+    it('changes visibility when menu is clicked', function() {
+
+      // On the first click.
+      menuIcon.click();
+      expect($('body').hasClass('menu-hidden')).toBe(false);
+
+      // On the second click.
+      menuIcon.click();
+      expect($('body').hasClass('menu-hidden')).toBe(true);
+    });
+
+  });
 
   /* TODO: Write a new test suite named "Initial Entries" */
 
