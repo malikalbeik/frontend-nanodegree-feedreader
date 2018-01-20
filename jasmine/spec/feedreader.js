@@ -70,7 +70,7 @@ $(function() {
 
     it('loadFeed function is called and executed properly', function(done) {
       var container = document.querySelector('.feed');
-      expect($('.parent .child') && initialComplete).toBe(true);
+      expect($('.feed .entry') && initialComplete).toBe(true);
       done();
     });
 
@@ -78,12 +78,14 @@ $(function() {
 
 
   describe('New Feed Selection', function() {
-    var initFeedSelection;
+    var initFeedSelection,
+      newFeedSelection;
     //check if the that the content changes after running the loadFeed function.
     beforeEach(function(done) {
       loadFeed(0, function() {
         initFeedSelection = document.querySelector(".feed").innerHTML;
         loadFeed(1, function() {
+          newFeedSelection = document.querySelector(".feed").innerHTML;
           done();
         });
       });
@@ -91,7 +93,6 @@ $(function() {
 
 
     it('feed is loaded by the loadFeed function', function(done) {
-      var newFeedSelection = document.querySelector(".feed").innerHTML;
       expect(initFeedSelection).not.toBe(newFeedSelection);
       done();
     });
