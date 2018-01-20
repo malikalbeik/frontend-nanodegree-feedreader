@@ -70,7 +70,7 @@ $(function() {
 
     it('loadFeed function is called and executed properly', function(done) {
       var container = document.querySelector('.feed');
-      expect(container.hasChildNodes() && initialComplete).toBe(true);
+      expect($('.parent .child') && initialComplete).toBe(true);
       done();
     });
 
@@ -78,11 +78,11 @@ $(function() {
 
 
   describe('New Feed Selection', function() {
-
+    var initFeedSelection;
     //check if the that the content changes after running the loadFeed function.
     beforeEach(function(done) {
-      initFeedSelection = document.querySelector(".feed").innerHTML;
       loadFeed(0, function() {
+        initFeedSelection = document.querySelector(".feed").innerHTML;
         loadFeed(1, function() {
           done();
         });
